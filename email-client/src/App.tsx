@@ -57,7 +57,7 @@ function App() {
       <div className={`h-screen grid ${gridClass} p-6 gap-5`}>
         <div className={`${emailClickedId ? 'hidden ' : ''} sm:block`}>
           {filteredData.map((email, index) => (
-            <div key={email.id} ref={index === data.length - 1 ? scrollRef : null}>
+            <div key={email.id} ref={index === data.length - 2 ? scrollRef : null}>
               <EmailListCard
                 email={email}
                 onClick={(id) => {
@@ -68,7 +68,7 @@ function App() {
             </div>
           ))}
         </div>
-        {emailClickedId && selectedEmail && (
+        {(emailClickedId && selectedEmail) ? (
           <div className='sticky top-0 z-10'>
             <EmailCard
               email={{
@@ -81,7 +81,8 @@ function App() {
               }}
             />
           </div>
-        )}
+        ) : null
+        }
       </div>
     </>
   );
